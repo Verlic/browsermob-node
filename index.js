@@ -97,6 +97,11 @@ Proxy.prototype = {
         this.doReq('DELETE', '/proxy/' + port, cb);
     },
 
+    blacklist: function(port, url, cb) {
+      var postData= 'regex=' + url + '&status=200';
+      this.doReq('PUT', '/proxy/' + port + 'blacklist', postData, cb);  
+    }
+
     getHAR: function(port, cb) {
         this.doReq('GET', '/proxy/' + port + '/har', cb);
     },
